@@ -1,0 +1,93 @@
+<% include header %>
+<div class="container mt-5">
+  <div class="card mt-md-5">
+    <div class="card-header bg-light text-center">
+      <strong>ELIJA UN CANDIDATO</strong>
+    </div>
+    <div class="card-body">
+  <div class="alert alert-danger 
+    <% if(!locals.error){ %>
+      d-none
+    <% } %>">
+    <p id="error"><%= locals.error %></p>
+  </div>
+  <form action="/votar/elegirCandidato" method="POST">
+    <% candidatos.forEach((item) => { %>
+        <div class="row justify-content-center h-100 mt-5">
+          <div class="container py-3 col-md-8 col-sm-12">
+            <label id="elegirCandidato">
+              <input type="radio" name="_id" id="_id" value="<%= item._id %>" class="card-input-element" />
+
+              <div class="card text-center card-input" id="card-candidato">
+                <div class="row ">
+                  <div class="col-md-4">
+                      <img class="img-candidato" style="width: 100%;" src="<%=item.imagenPartido%>">
+                  </div>
+                  <div class="col-md-6 px-3 align-items-center d-flex justify-content-center">
+                      <div class="card-block px-3">
+                        <h4 class="card-title" style="text-transform: uppercase;"><%=item.nombrePartido%></h4>
+                        <h5 class="card-text">Candidato: <%=item.nombreCandidato%></h5>            
+                      </div>
+                  </div>
+                  <div class="col-md-2 align-items-center" name="div-check" id="div-check">
+                    <i class="far fa-check-circle" style="font-size:48px;" name="icon-check" id="icon-check"></i>
+                  </div>
+                  </div>
+                </div>
+            </label>
+          </div>
+        </div>
+      <% }) %>
+      <input type="text" id="dni" name="dni" class="d-none" value="<%= dni %>">
+      <!-- Botón votar -->
+      <div class="container col-md-8 col-sm-12 mb-5">
+        <button class="btn btn-info btn-block" type="button" data-toggle="modal" data-target="#exampleModal" id="submit-candidato" disabled="disabled">VOTAR</button>
+        <button class="btn btn-danger btn-block" type="reset">CANCELAR</button>
+    </div>
+
+      <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ¿Está seguro que quiere elegir a este candidato?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal">Votar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Voto registrado</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2>Su voto ha sido registrado</h2> 
+            A continuación verá el total de votos y la posición que ocupa cada candidato hasta el momento.
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+    </div>
+  </div>
+</div>
+
+<% include footer %>

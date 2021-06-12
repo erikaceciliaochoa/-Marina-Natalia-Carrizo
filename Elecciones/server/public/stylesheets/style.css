@@ -1,0 +1,121 @@
+body, html {
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bg-vote {
+  /* Solamente afecta a la imagen de fondo de bg-vote */
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../images/vote_3.png");
+  
+  /*Para que ocupe toda la página */
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.index-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*Centrar*/
+  color: white;
+}
+
+.index-text h1 {
+  background-color: #17a2b7;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+/* ProgressBar */
+.progress-bar {
+  font-size: 15px
+}
+
+/* Card selection */
+#elegirCandidato {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.card-input-element {
+  display: none;
+}
+
+.card-input {
+  margin: 0px;
+  padding: 0px;
+}
+
+.card-input:hover {
+  cursor: pointer;
+}
+#icon-check{
+  color: lightgrey;
+}
+.card-input-element:checked + .card-input{
+   box-shadow: 0 0 5px 5px #2ecc71;
+}
+.card-input-element:checked + .card-input #icon-check{
+  color: #2ecc71;
+}
+
+/* Card percentage */
+#card-porcentaje {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+#img-porcentaje{
+  border-radius: 5px 5px 5px 5px;
+}
+
+/*Animation*/
+/* Flip Cards CSS */
+.card-container {
+  perspective: 700px;
+}
+
+.card-flip {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas: "frontAndBack";
+  transform-style: preserve-3d;
+  transition: all 0.7s ease;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.8s;
+  border-radius: 5px;
+}
+
+.card-flip div {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.front {
+  grid-area: frontAndBack;
+}
+
+.back {
+  grid-area: frontAndBack;
+  transform: rotateY(-180deg);
+}
+
+.card-container:hover .card-flip {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 5px 5px #2ecc71;
+}
