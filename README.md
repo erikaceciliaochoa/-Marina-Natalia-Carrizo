@@ -3,3 +3,4 @@ SOFTWARE UTILIZADO:
 - Windows 10 x64
 - Visual Code v1.49.4
 - Robo 3T v1.3.1
+- Angular
